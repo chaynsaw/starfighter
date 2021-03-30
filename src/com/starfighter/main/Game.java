@@ -13,9 +13,11 @@ public class Game extends Application {
 
     private Pane root = new Pane();
 
+    private Sprite player = new Sprite(300, 750, 40, 40, "player", Color.BLUE);
+
     private Parent createContent() {
         root.setPrefSize(600, 800);
-
+        root.getChildren().add(player);
         return root;
     }
 
