@@ -18,7 +18,7 @@ public class Game extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         primaryStage.setScene(new Scene(createContent()));
         primaryStage.show();
     }
