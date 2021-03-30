@@ -1,6 +1,7 @@
 package com.starfighter.main;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class Enemy extends GameObject{
@@ -10,9 +11,13 @@ public class Enemy extends GameObject{
     int choose = 0;
     int hp = 100;
 
-    public Enemy(int x, int y, ID id, Handler handler) {
-        super(x, y, id);
+    private BufferedImage enemyImage;
+
+    public Enemy(int x, int y, ID id, Handler handler, ObjectGraphics gg) {
+        super(x, y, id,gg);
         this.handler = handler;
+
+        enemyImage = gg.grabImage(4,2,32,32);
     }
 
     @Override
@@ -50,8 +55,7 @@ public class Enemy extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.pink);
-        g.fillRect(x,y,32,32);
+        g.drawImage(enemyImage,x,y,null);
     }
 
     @Override
