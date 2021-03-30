@@ -23,7 +23,21 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(new Scene(createContent()));
+        Scene scene = new Scene(createContent());
+        primaryStage.setScene(scene);
+        scene.setOnKeyPressed(e -> {
+            switch (e.getCode()) {
+                case A:
+                    player.moveLeft();
+                    break;
+                case D:
+                    player.moveRight();
+                    break;
+                case SPACE:
+                    break;
+
+            }
+        });
         primaryStage.show();
     }
 
