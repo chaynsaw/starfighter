@@ -1,5 +1,6 @@
 package com.starfighter.main;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,16 +10,96 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Game extends Application {
 
     private Pane root = new Pane();
 
     private Sprite player = new Sprite(300, 750, 40, 40, "player", Color.BLUE);
 
+    private double t = 0;
     private Parent createContent() {
         root.setPrefSize(600, 800);
         root.getChildren().add(player);
+
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                update();
+            }
+        };
+
+        timer.start();
+        nextLevel();
         return root;
+    }
+
+    private void nextLevel() {
+        for (int i = 0; i < 5; i++) {
+            Sprite s = new Sprite(90 + i * 100, 150, 30, 30, "Enemy", Color.RED);
+
+            root.getChildren().add(s);
+        }
+    }
+
+    private List<Sprite> sprites() {
+        return root.getChildren()
+                .stream()
+                .map(n -> (Sprite)n)
+                .collect(Collectors.toList());
+    }
+
+    private void update() {
+        t += 0.016;
+        sprites().forEach(s -> {
+            switch (s.type){
+                case "Enemybullet":
+                    s.moveDown();
+                    if (s.getBoundsInParent().intersects(player.getBoundsInParent())) {
+                        player.dead = true;
+                        s.dead = true;
+                    }
+                    break;
+                case "playerbullet":
+                    s.moveUp();
+                    sprites().stream()
+                            .filter(e -> e.type.equals("Enemy")).forEach(enemy -> {
+                                if (s.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+                                    enemy.dead = true;
+                                    s.dead = true;
+                                }
+                    });
+                case "Enemy":
+                    if (t > 2) {
+                        if (Math.random() < 0.3) {
+                            shoot(s);
+                        }
+                    }
+                    break;
+
+            }
+        });
+        root.getChildren().removeIf(n -> {
+            Sprite s = (Sprite) n;
+            return s.dead;
+        });
+        if (t > 2) {
+            t = 0;
+        }
+    }
+
+    private void shoot(Sprite origin) {
+        Sprite projectile = new Sprite(
+                (int) origin.getTranslateX() + 20,
+                (int) origin.getTranslateY(), 5,
+                20,
+                origin.type + "bullet",
+                Color.BLACK);
+
+        root.getChildren().add(projectile);
+
     }
 
     @Override
@@ -34,6 +115,7 @@ public class Game extends Application {
                     player.moveRight();
                     break;
                 case SPACE:
+                    shoot(player);
                     break;
 
             }
