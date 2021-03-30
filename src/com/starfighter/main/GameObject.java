@@ -7,11 +7,13 @@ public abstract class GameObject {
     protected int x,y;
     protected float velX = 0, velY = 0;
     protected ID id;
+    protected ObjectGraphics gg;
 
-    public GameObject(int x, int y, ID id){
+    public GameObject(int x, int y, ID id, ObjectGraphics gg){
         this.x = x;
         this.y = y;
         this.id = id;
+        this.gg =gg;
     }
 
     public abstract void tick();  // every object needs to update

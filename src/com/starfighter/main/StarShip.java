@@ -1,16 +1,22 @@
 package com.starfighter.main;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class StarShip extends GameObject{
 
     Handler handler;
     Game game;
 
-    public StarShip(int x, int y, ID id, Handler handler, Game game) {
-        super(x, y, id);
+    private BufferedImage starShip;
+
+
+    public StarShip(int x, int y, ID id, Handler handler, Game game , ObjectGraphics gg) {
+        super(x, y, id, gg);
         this.handler = handler;
         this.game = game;
+
+        starShip = gg.grabImage(1,1,32,48);
     }
 
     @Override
@@ -54,8 +60,7 @@ public class StarShip extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.yellow);
-        g.fillRect(x,y,32,48);
+        g.drawImage(starShip,x,y,null);
     }
 
     @Override
