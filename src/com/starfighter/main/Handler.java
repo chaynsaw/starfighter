@@ -1,12 +1,15 @@
 package com.starfighter.main;
 
 
+import com.starfighter.gameObjects.GameObject;
+
 import java.awt.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Handler {
 
-    LinkedList<GameObject> object = new LinkedList<>();
+    public List<GameObject> object = new ArrayList<>();
 
     private boolean up = false, down = false, right = false, left = false;
 

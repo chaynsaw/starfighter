@@ -1,4 +1,8 @@
-package com.starfighter.main;
+package com.starfighter.gameObjects;
+
+import com.starfighter.main.Handler;
+import com.starfighter.main.ID;
+import com.starfighter.main.ObjectGraphics;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -6,18 +10,16 @@ import java.util.Random;
 
 public class Enemy extends GameObject{
 
-    private Handler handler;
     Random r = new Random();
     int choose = 0;
     int hp = 100;
 
     private BufferedImage enemyImage;
 
-    public Enemy(int x, int y, ID id, Handler handler, ObjectGraphics gg) {
-        super(x, y, id,gg);
-        this.handler = handler;
+    public Enemy(int x, int y, ID id, ObjectGraphics gg, Handler handler) {
+        super(x, y, id,gg, handler);
 
-        enemyImage = gg.grabImage(4,2,32,32);
+        enemyImage = gg.grabImage(4,1,32,32);
     }
 
     @Override
