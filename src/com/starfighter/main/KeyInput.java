@@ -1,5 +1,7 @@
 package com.starfighter.main;
 
+import com.starfighter.gameObjects.GameObject;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

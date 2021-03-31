@@ -1,5 +1,7 @@
 package com.starfighter.main;
 
+import com.starfighter.gameObjects.*;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -57,7 +59,9 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    public void run() {
+
+    // CREDITS:TODO
+    public void run(){
         this.requestFocus();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
@@ -120,6 +124,9 @@ public class Game extends Canvas implements Runnable {
 
         g2d.translate(-camera.getX(), -camera.getY());
 
+        g.setColor(Color.white);
+        g.drawString("Ammo: " + ammo, 5, 20);
+
         /////////////////////////////////
         g.dispose();
         bs.show();
@@ -144,15 +151,11 @@ public class Game extends Canvas implements Runnable {
                     handler.addObject(new StarShip(xx*32, yy*32, ID.Player, handler, this, gg));
 
                 if(green == 255 && blue == 0)
-                    handler.addObject(new Enemy(xx*32, yy*32, ID.Enemy, handler, gg));
+                    handler.addObject(new Enemy(xx*32, yy*32, ID.Enemy, gg,  handler));
 
                 if(green == 255 && blue == 255)
                     handler.addObject(new Crate(xx*32, yy*32, ID.Crate, gg));
             }
         }
-    }
-
-    public static void main(String[] args) {
-        new Game();
     }
 }

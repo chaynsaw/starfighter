@@ -1,5 +1,7 @@
 package com.starfighter.main;
 
+import com.starfighter.gameObjects.GameObject;
+
 public class Camera {
 
     private float x, y;

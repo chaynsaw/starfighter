@@ -1,4 +1,8 @@
-package com.starfighter.main;
+package com.starfighter.gameObjects;
+
+import com.starfighter.main.Handler;
+import com.starfighter.main.ID;
+import com.starfighter.main.ObjectGraphics;
 
 import java.awt.*;
 

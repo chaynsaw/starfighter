@@ -1,5 +1,8 @@
 package com.starfighter.main;
 
+import com.starfighter.gameObjects.Bullet;
+import com.starfighter.gameObjects.GameObject;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
