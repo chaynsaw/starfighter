@@ -1,4 +1,7 @@
-package com.starfighter.main;
+package com.starfighter.gameObjects;
+
+import com.starfighter.main.ID;
+import com.starfighter.main.ObjectGraphics;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,7 +13,7 @@ public class Block extends GameObject{
     public Block(int x, int y, ID id, ObjectGraphics gg) {
         super(x, y, id, gg);
 
-        blockImage = gg.grabImage(4,1,32,32);
+        blockImage = gg.grabImage(4,2,32,32);
     }
 
     @Override
