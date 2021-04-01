@@ -46,8 +46,8 @@ public class StarShip extends GameObject{
     }
 
     private void collision(){
-        for (int i =0; i < handler.object.size(); i++){
-            GameObject tempObject = handler.object.get(i);
+        for (int i =0; i < handler.gameObjects.size(); i++){
+            GameObject tempObject = handler.gameObjects.get(i);
             if(tempObject.getId() == ID.BLOCK) {
                 if(getBounds().intersects(tempObject.getBounds())){
                     x += velX * -1;

@@ -16,8 +16,8 @@ public class KeyInput extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        for (int i = 0; i < handler.object.size(); i++) {
-            GameObject tempObject = handler.object.get(i);
+        for (int i = 0; i < handler.gameObjects.size(); i++) {
+            GameObject tempObject = handler.gameObjects.get(i);
 
             if (tempObject.getId() == ID.PLAYER) {
                 if (key == KeyEvent.VK_W) handler.setUp(true);
@@ -32,8 +32,8 @@ public class KeyInput extends KeyAdapter {
         // key stroke
         int key = e.getKeyCode();
 
-        for (int i = 0; i < handler.object.size(); i++) {
-            GameObject tempObject = handler.object.get(i);
+        for (int i = 0; i < handler.gameObjects.size(); i++) {
+            GameObject tempObject = handler.gameObjects.get(i);
 
             if (tempObject.getId() == ID.PLAYER) {
                 if (key == KeyEvent.VK_W) handler.setUp(false);

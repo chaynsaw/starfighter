@@ -29,8 +29,8 @@ public class Enemy extends GameObject{
 
         choose = r.nextInt(10);
 
-        for (int i = 0; i < handler.object.size(); i++){
-            GameObject tempObject = handler.object.get(i);
+        for (int i = 0; i < handler.gameObjects.size(); i++){
+            GameObject tempObject = handler.gameObjects.get(i);
 
             if(tempObject.getId() == ID.BLOCK){
                 if(getBoundsBig().intersects(tempObject.getBounds())){

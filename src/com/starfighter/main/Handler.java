@@ -9,32 +9,32 @@ import java.util.List;
 
 public class Handler {
 
-    public List<GameObject> object = new ArrayList<>();
+    public List<GameObject> gameObjects = new ArrayList<>();
 
     private boolean up = false, down = false, right = false, left = false;
 
     public void tick() {
-        for (int i = 0; i < object.size(); i++) {
-            GameObject tempObject = object.get(i);
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
 
             tempObject.tick();
         }
     }
 
     public void render(Graphics g) {
-        for (int i = 0; i < object.size(); i++) {
-            GameObject tempObject = object.get(i);
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
 
             tempObject.render(g);
         }
     }
 
     public void addObject (GameObject tempObject){
-        object.add(tempObject);
+        gameObjects.add(tempObject);
     }
 
     public void removeObject(GameObject tempObject){
-        object.remove(tempObject);
+        gameObjects.remove(tempObject);
     }
 
     public boolean isUp() {
