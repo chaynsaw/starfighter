@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable {
 
-    //Fields
+    // FIELDS
     private boolean isRunning = false;
     private Thread thread;
     protected final Handler handler;
@@ -21,7 +21,7 @@ public class Game extends Canvas implements Runnable {
 
     public int ammo = 100;
 
-    //constructor
+    // CONSTRUCTOR
     public Game() {
         new Window(1000, 563, "StarFighter", this); //size
         start();
@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable {
     }
 
 
-    // Runnable
+    // RUNNABLE METHODS
     private void start() {
         isRunning = true;
         thread = new Thread(this); // we are calling this class run method
@@ -60,7 +60,7 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    // CREDITS:Markus Alexej Persson AKA Notch developer of Minecraft
+    // CREDITS: Markus Alexej Persson AKA Notch developer of Minecraft
     public void run() {
         this.requestFocus();
         long lastTime = System.nanoTime();
@@ -108,9 +108,9 @@ public class Game extends Canvas implements Runnable {
 
         Graphics g = bs.getDrawGraphics();
         Graphics2D g2d = (Graphics2D) g;
+
         ////////////////////////////////
-        g.setColor(Color.gray);
-        g.fillRect(0, 0, getWidth(), getHeight());
+
 
         g2d.translate(-camera.getX(), -camera.getY());
 
@@ -124,7 +124,6 @@ public class Game extends Canvas implements Runnable {
 
         g2d.translate(-camera.getX(), -camera.getY());
 
-        g.setColor(Color.white);
         g.drawString("Ammo: " + ammo, 5, 20);
 
         /////////////////////////////////
