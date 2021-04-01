@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MouseInput extends MouseAdapter {
 
-    private Handler handler;
+    private Handler handler; // to create bullets
     private Camera camera;
     private Game game;
     private ObjectGraphics gg;
@@ -24,7 +24,7 @@ public class MouseInput extends MouseAdapter {
     }
 
     public void mousePressed(MouseEvent e) {
-        int mx = (int) (e.getX() + camera.getX());
+        int mx = (int) (e.getX() + camera.getX()); //adding to camera
         int my = (int) (e.getY() + camera.getY());
 
         for (int i = 0; i < gameObjects.size(); i++) {

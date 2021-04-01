@@ -126,8 +126,9 @@ public class Game extends Canvas implements Runnable {
 
         handler.render(g);
 
-        g2d.translate(-camera.getX(), -camera.getY());
+        g2d.translate(camera.getX(), camera.getY());
 
+        g.setColor(Color.white);
         g.drawString("Ammo: " + getAmmo(), 5, 20);
 
         /////////////////////////////////
