@@ -26,7 +26,7 @@ public class Bullet extends GameObject {
         for(int i = 0; i < handler.object.size(); i++){
             GameObject tempObject = handler.object.get(i);
 
-            if(tempObject.getId() == ID.Block){
+            if(tempObject.getId() == ID.BLOCK){
                 if(getBounds().intersects(tempObject.getBounds())){
                     handler.removeObject(this);
                 }

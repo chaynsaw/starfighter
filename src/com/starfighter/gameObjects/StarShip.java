@@ -48,13 +48,13 @@ public class StarShip extends GameObject{
     private void collision(){
         for (int i =0; i < handler.object.size(); i++){
             GameObject tempObject = handler.object.get(i);
-            if(tempObject.getId() == ID.Block) {
+            if(tempObject.getId() == ID.BLOCK) {
                 if(getBounds().intersects(tempObject.getBounds())){
                     x += velX * -1;
                     y += velY * -1;
                 }
             }
-            if (tempObject.getId() == ID.Crate){
+            if (tempObject.getId() == ID.CRATE){
                 if(getBounds().intersects(tempObject.getBounds())){
                     game.ammo += 50;
                     handler.removeObject(tempObject);
