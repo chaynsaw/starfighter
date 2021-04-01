@@ -4,20 +4,23 @@ import com.starfighter.gameObjects.GameObject;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class KeyInput extends KeyAdapter {
 
     Handler handler;  // dont create new
+    public List<GameObject> gameObjects;
 
     public KeyInput(Handler handler) {
         this.handler = handler;
+        this.gameObjects = handler.getGameObjects();
     }
 
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        for (int i = 0; i < handler.gameObjects.size(); i++) {
-            GameObject tempObject = handler.gameObjects.get(i);
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
 
             if (tempObject.getId() == ID.PLAYER) {
                 if (key == KeyEvent.VK_W) handler.setUp(true);
@@ -32,8 +35,8 @@ public class KeyInput extends KeyAdapter {
         // key stroke
         int key = e.getKeyCode();
 
-        for (int i = 0; i < handler.gameObjects.size(); i++) {
-            GameObject tempObject = handler.gameObjects.get(i);
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
 
             if (tempObject.getId() == ID.PLAYER) {
                 if (key == KeyEvent.VK_W) handler.setUp(false);

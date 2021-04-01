@@ -5,6 +5,7 @@ import com.starfighter.main.ID;
 import com.starfighter.main.ObjectGraphics;
 
 import java.awt.*;
+import java.util.List;
 
 public abstract class GameObject {
 
@@ -13,6 +14,7 @@ public abstract class GameObject {
     protected ID id;
     protected ObjectGraphics gg;
     protected Handler handler;
+    public List<GameObject> gameObjects;
 
     public GameObject(int x, int y, ID id, ObjectGraphics gg) {
         this.x = x;

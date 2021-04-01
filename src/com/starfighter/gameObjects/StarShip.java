@@ -7,6 +7,7 @@ import com.starfighter.main.ObjectGraphics;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 public class StarShip extends GameObject{
 
@@ -19,6 +20,7 @@ public class StarShip extends GameObject{
     public StarShip(int x, int y, ID id, Handler handler, Game game , ObjectGraphics gg) {
         super(x, y, id, gg);
         this.handler = handler;
+        this.gameObjects = handler.getGameObjects();
         this.game = game;
 
         starShip = gg.grabImage(1,1,32,48);
@@ -46,8 +48,8 @@ public class StarShip extends GameObject{
     }
 
     private void collision(){
-        for (int i =0; i < handler.gameObjects.size(); i++){
-            GameObject tempObject = handler.gameObjects.get(i);
+        for (int i =0; i < gameObjects.size(); i++){
+            GameObject tempObject = gameObjects.get(i);
             if(tempObject.getId() == ID.BLOCK) {
                 if(getBounds().intersects(tempObject.getBounds())){
                     x += velX * -1;

@@ -5,6 +5,7 @@ import com.starfighter.gameObjects.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 public class Game extends Canvas implements Runnable {
 
@@ -15,6 +16,7 @@ public class Game extends Canvas implements Runnable {
     protected final Handler handler;
     protected final Camera camera;
     protected final ObjectGraphics gg;
+    private List<GameObject> gameObjects;
 
     private BufferedImage level = null;
     private BufferedImage graphics = null;
@@ -29,6 +31,7 @@ public class Game extends Canvas implements Runnable {
         start();
 
         handler = new Handler();
+        this.gameObjects = handler.getGameObjects();
         camera = new Camera(0, 0);
         this.addKeyListener(new KeyInput(handler));
 
@@ -92,9 +95,9 @@ public class Game extends Canvas implements Runnable {
 
     public void tick() {
 
-        for (int i = 0; i < handler.gameObjects.size(); i++) {
-            if (handler.gameObjects.get(i).getId() == ID.PLAYER) {
-                camera.tick(handler.gameObjects.get(i));
+        for (int i = 0; i < gameObjects.size(); i++) {
+            if (gameObjects.get(i).getId() == ID.PLAYER) {
+                camera.tick(gameObjects.get(i));
 
             }
         }

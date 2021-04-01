@@ -5,6 +5,7 @@ import com.starfighter.main.ID;
 import com.starfighter.main.ObjectGraphics;
 
 import java.awt.*;
+import java.util.List;
 
 public class Bullet extends GameObject {
 
@@ -13,6 +14,7 @@ public class Bullet extends GameObject {
     public Bullet(int x, int y, ID id, Handler handler, int mx, int my, ObjectGraphics gg) {
         super(x, y, id, gg);
         this.handler = handler;
+        this.gameObjects = handler.getGameObjects();
 
         velX = (mx -x) / 10;
         velY = (my -y) / 10;
@@ -23,8 +25,8 @@ public class Bullet extends GameObject {
         x += velX;
         y += velY;
 
-        for(int i = 0; i < handler.gameObjects.size(); i++){
-            GameObject tempObject = handler.gameObjects.get(i);
+        for(int i = 0; i < gameObjects.size(); i++){
+            GameObject tempObject = gameObjects.get(i);
 
             if(tempObject.getId() == ID.BLOCK){
                 if(getBounds().intersects(tempObject.getBounds())){

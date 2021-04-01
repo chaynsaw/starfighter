@@ -7,6 +7,7 @@ import com.starfighter.main.ObjectGraphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import java.util.List;
 
 public class Enemy extends GameObject{
 
@@ -20,6 +21,8 @@ public class Enemy extends GameObject{
         super(x, y, id,gg, handler);
 
         enemyImage = gg.grabImage(4,1,32,32);
+        this.gameObjects = handler.getGameObjects();
+
     }
 
     @Override
@@ -29,8 +32,8 @@ public class Enemy extends GameObject{
 
         choose = r.nextInt(10);
 
-        for (int i = 0; i < handler.gameObjects.size(); i++){
-            GameObject tempObject = handler.gameObjects.get(i);
+        for (int i = 0; i < gameObjects.size(); i++){
+            GameObject tempObject = gameObjects.get(i);
 
             if(tempObject.getId() == ID.BLOCK){
                 if(getBoundsBig().intersects(tempObject.getBounds())){
