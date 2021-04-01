@@ -32,7 +32,7 @@ public abstract class GameObject {
 
     public abstract void render(Graphics g); // needs to draw something
 
-    public abstract Rectangle getBounds(); // needs collision detection
+    public abstract Rectangle getBounds(); // needs collision detection, mask for our character
 
     //Accessor Methods
     public int getX() {

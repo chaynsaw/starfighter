@@ -23,7 +23,7 @@ public class Window {
         frame.pack();
 
         menu = new JMenuBar();
-        ammo = new JMenu("Ammo: " + game.ammo);
+        ammo = new JMenu("Bal and Chayn");
         menu.add(ammo);
         frame.setJMenuBar(menu);
 
