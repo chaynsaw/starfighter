@@ -7,9 +7,9 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable {
-    private Window window;
 
     // FIELDS
+    private Window window;
     private boolean isRunning = false;
     private Thread thread;
     protected final Handler handler;
