@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class GameObject {
 
-    protected int x,y;
+    protected int x, y;
     protected double velX = 0, velY = 0;
     protected ID id;
     protected ObjectGraphics gg;
@@ -20,16 +20,18 @@ public abstract class GameObject {
         this.x = x;
         this.y = y;
         this.id = id;
-        this.gg =gg;
+        this.gg = gg;
     }
 
-    public GameObject(int x, int y, ID id, ObjectGraphics gg, Handler handler){
+    public GameObject(int x, int y, ID id, ObjectGraphics gg, Handler handler) {
         this(x, y, id, gg);
         this.handler = handler;
     }
 
     public abstract void tick();  // every object needs to update
+
     public abstract void render(Graphics g); // needs to draw something
+
     public abstract Rectangle getBounds(); // needs collision detection
 
     //Accessor Methods

@@ -16,8 +16,8 @@ public class Bullet extends GameObject {
         this.handler = handler;
         this.gameObjects = handler.getGameObjects();
 
-        velX = (mx -x) / 10;
-        velY = (my -y) / 10;
+        velX = (mx - x) / 10;
+        velY = (my - y) / 10;
     }
 
     @Override
@@ -25,11 +25,11 @@ public class Bullet extends GameObject {
         x += velX;
         y += velY;
 
-        for(int i = 0; i < gameObjects.size(); i++){
+        for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
 
-            if(tempObject.getId() == ID.BLOCK){
-                if(getBounds().intersects(tempObject.getBounds())){
+            if (tempObject.getId() == ID.BLOCK) {
+                if (getBounds().intersects(tempObject.getBounds())) {
                     handler.removeObject(this);
                 }
             }
@@ -39,11 +39,11 @@ public class Bullet extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.green);
-        g.fillOval(x,y, 8,8);
+        g.fillOval(x, y, 8, 8);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,8,8);
+        return new Rectangle(x, y, 8, 8);
     }
 }

@@ -33,11 +33,11 @@ public class Handler {
         return gameObjects;
     }
 
-    public void addObject (GameObject tempObject){
+    public void addObject(GameObject tempObject) {
         gameObjects.add(tempObject);
     }
 
-    public void removeObject(GameObject tempObject){
+    public void removeObject(GameObject tempObject) {
         gameObjects.remove(tempObject);
     }
 

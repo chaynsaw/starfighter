@@ -98,7 +98,6 @@ public class Game extends Canvas implements Runnable {
         for (int i = 0; i < gameObjects.size(); i++) {
             if (gameObjects.get(i).getId() == ID.PLAYER) {
                 camera.tick(gameObjects.get(i));
-
             }
         }
 

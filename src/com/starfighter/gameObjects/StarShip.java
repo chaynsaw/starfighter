@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-public class StarShip extends GameObject{
+public class StarShip extends GameObject {
 
     Handler handler;
     Game game;
@@ -17,13 +17,13 @@ public class StarShip extends GameObject{
     private BufferedImage starShip;
 
 
-    public StarShip(int x, int y, ID id, Handler handler, Game game , ObjectGraphics gg) {
+    public StarShip(int x, int y, ID id, Handler handler, Game game, ObjectGraphics gg) {
         super(x, y, id, gg);
         this.handler = handler;
         this.gameObjects = handler.getGameObjects();
         this.game = game;
 
-        starShip = gg.grabImage(1,1,32,48);
+        starShip = gg.grabImage(1, 1, 32, 48);
     }
 
     @Override
@@ -34,30 +34,30 @@ public class StarShip extends GameObject{
         collision();
 
         // movement
-        if(handler.isUp()) velY = -5;
+        if (handler.isUp()) velY = -5;
         else if (!handler.isDown()) velY = 0;
 
-        if(handler.isDown()) velY = 5;
+        if (handler.isDown()) velY = 5;
         else if (!handler.isUp()) velY = 0;
 
-        if(handler.isRight()) velX = 5;
+        if (handler.isRight()) velX = 5;
         else if (!handler.isLeft()) velX = 0;
 
-        if(handler.isLeft()) velX = -5;
+        if (handler.isLeft()) velX = -5;
         else if (!handler.isRight()) velX = 0;
     }
 
-    private void collision(){
-        for (int i =0; i < gameObjects.size(); i++){
+    private void collision() {
+        for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
-            if(tempObject.getId() == ID.BLOCK) {
-                if(getBounds().intersects(tempObject.getBounds())){
+            if (tempObject.getId() == ID.BLOCK) {
+                if (getBounds().intersects(tempObject.getBounds())) {
                     x += velX * -1;
                     y += velY * -1;
                 }
             }
-            if (tempObject.getId() == ID.CRATE){
-                if(getBounds().intersects(tempObject.getBounds())){
+            if (tempObject.getId() == ID.CRATE) {
+                if (getBounds().intersects(tempObject.getBounds())) {
                     game.ammo += 50;
                     handler.removeObject(tempObject);
                 }
@@ -67,11 +67,11 @@ public class StarShip extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(starShip,x,y,null);
+        g.drawImage(starShip, x, y, null);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x,y,32,48);
+        return new Rectangle(x, y, 32, 48);
     }
 }
