@@ -7,6 +7,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable {
+    private Window window;
 
     // FIELDS
     private boolean isRunning = false;
@@ -23,7 +24,8 @@ public class Game extends Canvas implements Runnable {
 
     // CONSTRUCTOR
     public Game() {
-        new Window(1000, 563, "StarFighter", this); //size
+
+        window = new Window(1000, 563, "StarFighter", this); //size
         start();
 
         handler = new Handler();
@@ -93,6 +95,7 @@ public class Game extends Canvas implements Runnable {
         for (int i = 0; i < handler.object.size(); i++) {
             if (handler.object.get(i).getId() == ID.PLAYER) {
                 camera.tick(handler.object.get(i));
+
             }
         }
 
@@ -111,7 +114,6 @@ public class Game extends Canvas implements Runnable {
 
         ////////////////////////////////
 
-
         g2d.translate(-camera.getX(), -camera.getY());
 
         for (int xx = 0; xx < 30 * 72; xx += 64) {
@@ -124,11 +126,15 @@ public class Game extends Canvas implements Runnable {
 
         g2d.translate(-camera.getX(), -camera.getY());
 
-        g.drawString("Ammo: " + ammo, 5, 20);
+        g.drawString("Ammo: " + getAmmo(), 5, 20);
 
         /////////////////////////////////
         g.dispose();
         bs.show();
+    }
+
+    public int getAmmo() {
+        return ammo;
     }
 
     // loading the level

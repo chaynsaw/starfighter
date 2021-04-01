@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Window {
+    JMenuBar menu;
+    JMenu ammo;
 
     public Window(int width, int height, String title, Game game) {
         JFrame frame = new JFrame(title);
@@ -20,8 +22,8 @@ public class Window {
         frame.setVisible(true);
         frame.pack();
 
-        JMenuBar menu = new JMenuBar();
-        JMenu ammo = new JMenu("Ammo: " + game.ammo);
+        menu = new JMenuBar();
+        ammo = new JMenu("Ammo: " + game.ammo);
         menu.add(ammo);
         frame.setJMenuBar(menu);
 
