@@ -4,16 +4,16 @@ import com.starfighter.gameObjects.GameObject;
 
 public class Camera {
 
-    private float x, y;
+    private double x, y;
 
-    public Camera(float x, float y) {
+    public Camera(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     public void tick(GameObject object) {
-        x += ((object.getX() - x) - 1000/2) * 0.05f;
-        y += ((object.getY() - y) - 563/2) * 0.05f;
+        x += ((object.getX() - x) - 1000/2) * 0.05;
+        y += ((object.getY() - y) - 563/2) * 0.05;
 
         if(x <= 0) x = 0;
         if(x >= 1032) x = 1032;
@@ -21,19 +21,19 @@ public class Camera {
         if(y >= 563+48) y = 563+48;
     }
 
-    public float getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(float x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public float getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(float y) {
+    public void setY(double y) {
         this.y = y;
     }
 }

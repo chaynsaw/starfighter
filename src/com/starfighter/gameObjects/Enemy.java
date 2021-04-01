@@ -32,7 +32,7 @@ public class Enemy extends GameObject{
         for (int i = 0; i < handler.object.size(); i++){
             GameObject tempObject = handler.object.get(i);
 
-            if(tempObject.getId() == ID.Block){
+            if(tempObject.getId() == ID.BLOCK){
                 if(getBoundsBig().intersects(tempObject.getBounds())){
                     x += (velX*2) * -1;
                     y += (velY*2) * -1;
@@ -44,7 +44,7 @@ public class Enemy extends GameObject{
                 }
             }
 
-            if(tempObject.getId() == ID.Bullet){
+            if(tempObject.getId() == ID.BULLET){
                 if(getBounds().intersects(tempObject.getBounds())) {
                     hp -= 50;
                     handler.removeObject(tempObject);

@@ -23,7 +23,7 @@ public class Game extends Canvas implements Runnable {
 
     //constructor
     public Game(){
-        new Window(1000,563,"StarFighter", this);
+        new Window(1000,563,"StarFighter", this); //size
         start();
 
         handler = new Handler();
@@ -59,7 +59,7 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
-    // CREDITS:TODO
+    // CREDITS:Markus Alexej Persson AKA Notch developer of Minecraft
     public void run(){
         this.requestFocus();
         long lastTime = System.nanoTime();
@@ -90,7 +90,7 @@ public class Game extends Canvas implements Runnable {
     public void tick(){
 
         for(int i = 0; i < handler.object.size(); i++){
-            if(handler.object.get(i).getId() == ID.Player){
+            if(handler.object.get(i).getId() == ID.PLAYER){
                 camera.tick(handler.object.get(i));
             }
         }
@@ -144,16 +144,16 @@ public class Game extends Canvas implements Runnable {
                 int blue = (pixel) & 0xff;
 
                 if(red == 255)
-                    handler.addObject(new Block(xx*32, yy*32, ID.Block, gg));
+                    handler.addObject(new Block(xx*32, yy*32, ID.BLOCK, gg));
 
                 if(blue == 255 && green == 0)
-                    handler.addObject(new StarShip(xx*32, yy*32, ID.Player, handler, this, gg));
+                    handler.addObject(new StarShip(xx*32, yy*32, ID.PLAYER, handler, this, gg));
 
                 if(green == 255 && blue == 0)
-                    handler.addObject(new Enemy(xx*32, yy*32, ID.Enemy, gg,  handler));
+                    handler.addObject(new Enemy(xx*32, yy*32, ID.ENEMY, gg,  handler));
 
                 if(green == 255 && blue == 255)
-                    handler.addObject(new Crate(xx*32, yy*32, ID.Crate, gg));
+                    handler.addObject(new Crate(xx*32, yy*32, ID.CRATE, gg));
             }
         }
     }

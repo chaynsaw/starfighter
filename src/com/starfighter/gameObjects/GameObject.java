@@ -9,7 +9,7 @@ import java.awt.*;
 public abstract class GameObject {
 
     protected int x,y;
-    protected float velX = 0, velY = 0;
+    protected double velX = 0, velY = 0;
     protected ID id;
     protected ObjectGraphics gg;
     protected Handler handler;
@@ -47,19 +47,19 @@ public abstract class GameObject {
         this.y = y;
     }
 
-    public float getVelX() {
+    public double getVelX() {
         return velX;
     }
 
-    public void setVelX(float velX) {
+    public void setVelX(double velX) {
         this.velX = velX;
     }
 
-    public float getVelY() {
+    public double getVelY() {
         return velY;
     }
 
-    public void setVelY(float velY) {
+    public void setVelY(double velY) {
         this.velY = velY;
     }
 
